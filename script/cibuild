@@ -3,6 +3,9 @@
 # Stop on error and output every command before executing it
 set -ex
 
+echo "[cibuild] started at..."
+date "+%H:%M:%S"
+
 export RAILS_ENV="test"
 export RACK_ENV="test"
 
@@ -10,4 +13,9 @@ hostname
 rbenv local 2.3.0
 bundle install --local
 bundle exec pronto run -c "origin/develop" -f github
+
+# run tests
+echo "[cibuild] Running tests ..."
+date "+%H:%M:%S"
+
 bundle exec rake
