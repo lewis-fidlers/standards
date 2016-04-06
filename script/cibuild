@@ -1,4 +1,6 @@
 #! /bin/sh
+#
+# Stop on error and output every command before executing it
 set -ex
 
 RAILS_ENV="test"
