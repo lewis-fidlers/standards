@@ -31,11 +31,16 @@ The CI uses [pronto](https://github.com/mmozuras/pronto) to validate conforming 
 
 ### The ruby styleguide
 
-You can use the ruby styleguide as a base by adding it to your homedirectory
+Ruby style is validated using [pronto-rubocop](https://github.com/mmozuras/pronto-rubocop)
+
+This uses [Rubocop](https://github.com/bbatsov/rubocop) which means we can override the styleguide per project.
+Do this by checking in a `.rubocop.yml` in the root of your project.
+
+You can use the ruby styleguide as a base by adding it to your homedirectory as follows:
 
 ```
 curl -Lo ~/.rubocop.yml https://raw.githubusercontent.com/10to1/styleguides/master/guides/ruby.yml
 ```
 
-In our case this is installed for the CI-user. But can be overridden on a per project basis.
+In our case this is installed for the CI-user.
 If a pull requests gets merged, don't forget to update style guides on ci if required.
