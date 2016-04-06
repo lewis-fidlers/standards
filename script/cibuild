@@ -3,8 +3,8 @@
 # Stop on error and output every command before executing it
 set -ex
 
-RAILS_ENV="test"
-export RAILS_ENV
+export RAILS_ENV="test"
+export RACK_ENV="test"
 
 hostname
 rbenv local 2.3.0
