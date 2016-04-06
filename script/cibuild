@@ -12,8 +12,16 @@ export RACK_ENV="test"
 hostname
 rbenv local 2.3.0
 bundle install --local
-bundle exec pronto run -c "origin/develop" -f github
 
+# Linting with pronto
+# 
+# On CI the access token will be set to comment on Github
+if [ -n "$GITHUB_ACCESS_TOKEN" ]; then
+  # Only run pronto if part of the Gemfile
+  if bundle list | grep -q pronto; then
+    bundle exec pronto run -c "origin/develop" -f github
+  fi
+fi
 # run tests
 echo "[cibuild] Running tests ..."
 date "+%H:%M:%S"
