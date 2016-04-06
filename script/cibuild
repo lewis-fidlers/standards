@@ -1,0 +1,11 @@
+#! /bin/sh
+set -ex
+
+RAILS_ENV="test"
+export RAILS_ENV
+
+hostname
+rbenv local 2.3.0
+bundle install --local
+bundle exec pronto run -c "origin/develop" -f github
+bundle exec rake

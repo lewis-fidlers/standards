@@ -1,0 +1,43 @@
+#! /usr/bin/ruby
+
+def report(text)
+  puts "=" * 50
+  puts "  #{text} ".center(50, "*")
+end
+
+def todo(text)
+  puts "‼️ #{text}"
+end
+
+def finish(text)
+  puts "🍻 #{text}"
+end
+
+dependencies = %w() # add a bunch of homebrew dependencies
+
+report("dependencies")
+
+dependencies.each do |dependency|
+  todo "install #{dependency} `brew install #{dependency}`"
+end
+
+report "Creating database user"
+`createuser -S -d -R -e -w <YOUR POSTGRES USERNAME>`
+
+# Install the bundle with everything vendored
+# http://ryan.mcgeary.org/2011/02/09/vendor-everything-still-applies/
+#
+report "Installing bundle"
+`bundle install --local`
+
+report "Creating database"
+`bundle exec rake db:create`
+
+report "loading schema"
+`rake db:schema:load`
+
+report "seeding the database"
+`rake db:seed`
+
+finish "all done, start the app with `<YOUR COMMAND TO SERVE>`"
+puts "login with: <EXPLAIN HOW TO LOG IN TO YOUR APP>"
