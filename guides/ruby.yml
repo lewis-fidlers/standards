@@ -389,3 +389,7 @@ Style/DotPosition:
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#consistent-multi-line-chains'
   Enabled: true
   EnforcedStyle: leading
+
+Style/SignalException:
+  Enabled: true
+  EnforcedStyle: semantic
