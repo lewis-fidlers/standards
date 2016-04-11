@@ -12,9 +12,11 @@ export RACK_ENV="test"
 hostname
 rbenv local 2.3.0
 bundle install --local
+bin/rake db:schema:load
+bin/rake db:test:prepare
 
 # Linting with pronto
-# 
+#
 # On CI the access token will be set to comment on Github
 if [ -n "$GITHUB_ACCESS_TOKEN" ]; then
   # Only run pronto if part of the Gemfile
